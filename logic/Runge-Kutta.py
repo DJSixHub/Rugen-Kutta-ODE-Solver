@@ -18,18 +18,23 @@ def runge_kutta(x0,y0,h,fun,title):
 
         return t,y
 
+
     def f(x,y,fun):
         return fun(x,y)
-        
+
     x0 = x0
     y0 = y0
     x_span = (x0,10)
     h = h
+
+
     t,y_r = _runge_kutta(f,y0,x_span,h,fun)
+
+    sol = solve_ivp(fun, x_span, [y0], t_eval=np.linspace(x0, 10, 100))
+
+    # los dos primeros son los calculados por nosotros, los otros dos son con el de python
+    # las t son las x
+    # y_r son las y
     return t,y_r,sol.t,sol.y[0]
-
-def f(x,y):
-    return x+y
-
-runge_kutta(0, 0, 0.6,f,'x+y')
+   
 
