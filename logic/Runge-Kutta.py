@@ -1,11 +1,13 @@
 import numpy as np 
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
+from typing import Callable
 
-def runge_kutta(x0,y0,h,fun,title):
-    def _runge_kutta(f,y0,x_span,h,fun):
+def runge_kutta(x0:float|int, y0:float|int, h:float, fun:Callable[int|float, int|float]):
 
-        t = np.arange(x_span[0],x_span[1] + h,h)
+    def _runge_kutta(f:Callable[int|float, int|float], y0:float|int,x_span, h:float|int, fun:Callable[int|float, int|float]):
+
+        t = np.arange(x_span[0],x_span[1],h)
         y = np.zeros(len(t))
         y[0] = y0
 
@@ -26,15 +28,24 @@ def runge_kutta(x0,y0,h,fun,title):
     y0 = y0
     x_span = (x0,10)
     h = h
-
-
+    
     t,y_r = _runge_kutta(f,y0,x_span,h,fun)
-
+    #hay parametros tengo que ajustarlos para que coja más rango de valores
     sol = solve_ivp(fun, x_span, [y0], t_eval=np.linspace(x0, 10, 100))
-
+ 
     # los dos primeros son los calculados por nosotros, los otros dos son con el de python
     # las t son las x
     # y_r son las y
     return t,y_r,sol.t,sol.y[0]
    
 
+
+
+
+
+"""
+asi se llama 
+def f(x,y):
+    return x+y
+
+runge_kutta(1,0,0.5,f)"""
