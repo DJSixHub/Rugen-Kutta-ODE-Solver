@@ -4,6 +4,8 @@ from parser import Parser
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+
 lexer = Lexer(TOKEN_PATTERNS, CONSTANTS)
 tokens: list[Token] = lexer.tokenize(function)
 parser = Parser()
@@ -19,9 +21,9 @@ def edo(ast: Expression, vars: dict):
 
 
 
-def RungeKutta(x_point, y_point, h):
+def RungeKutta(x_point:int, y_point:int, h:int):
     
-    X = np.arange(0,5,h)
+    X = np.arange(x_point,5,h)
     y = np.zeros(len(X))
     y[0]=y_point
 
@@ -36,8 +38,6 @@ def RungeKutta(x_point, y_point, h):
     return X,y
 
 
-
-RungeKutta(x_point,y_point,h)
 
 
 
