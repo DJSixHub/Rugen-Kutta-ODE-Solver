@@ -4,6 +4,7 @@ from parser import Parser
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 function = input("Escribe tu función\n")
 x_point = float(input("Dime el valor inicial de x: "))
 y_point = float(input("Dime el valor inicial de y: "))
