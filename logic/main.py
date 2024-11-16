@@ -26,7 +26,7 @@ def edo(ast: Expression, vars: dict):
 
 def RungeKutta(x_point, y_point, h):
     
-    X = np.arange(int(x_point),20,h)
+    X = np.arange(int(x_point),5,h)
     y = np.zeros(len(X))
     y[0]=y_point
 
@@ -38,10 +38,7 @@ def RungeKutta(x_point, y_point, h):
         k4 = h * edo(ast,{'x': i + h, 'y': y[i] + k3})
         y[i+1] = (y[i] + (1/6 * k1 + 1/3 * k2 + 1/3 * k3 + 1/6 * k4))
    
-
     return X,y
-
-
 
 
 
