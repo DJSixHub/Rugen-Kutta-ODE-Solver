@@ -5,10 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-function = input("Escribe tu función\n")
-x_point = float(input("Dime el valor inicial de x: "))
-y_point = float(input("Dime el valor inicial de y: "))
-h = float(input("Dime el paso: "))
 
 lexer = Lexer(TOKEN_PATTERNS, CONSTANTS)
 tokens: list[Token] = lexer.tokenize(function)
